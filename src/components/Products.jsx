@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Products = () => {
   const [data, setData] = useState([]);
   const [cat, setCat] = useState([]);
@@ -36,7 +36,6 @@ const Products = () => {
   const uniqueCategories = Array.from(
     new Set(cat.map((item) => item.category))
   );
-  console.log(uniqueCategories);
   useEffect(() => {
     getProducts();
     getcategories();
@@ -51,7 +50,7 @@ const Products = () => {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <div className="flex gap-3 w-full sm:justify-start md:justify-center flex-wrap mt-4" >
+            <div className="flex gap-3 w-full sm:justify-start md:justify-center flex-wrap mt-4"  >
               <button
                 onClick={() => setUrl(`https://dummyjson.com/products`)}
                 className="bg-emerald-400 p-2 rounded cursor-pointer border-2 border-emerald-400 hover:bg-white"
@@ -63,7 +62,7 @@ const Products = () => {
                   onClick={() =>
                     setUrl(`https://dummyjson.com/products/category/${item}`)
                   }
-                  key={item.index}
+                  key={item}
                   className="bg-emerald-400 p-2 rounded cursor-pointer border-2 border-emerald-400 hover:bg-white"
                 >
                   {item}
@@ -94,12 +93,12 @@ const Products = () => {
 
               </div>
               <span className="ml-1">rate : {item.rating}/5</span>
-              <NavLink
+              <Link
                 to={`/products/${item.id}`}
                 className="bg-emerald-300 w-full rounded-lg text-gray-700 capitalize border-2 text-center border-emerald-300 hover:bg-transparent"
               >
                 view all details{" "}
-              </NavLink>
+                </Link>
             </div>
           ))}
         </div>

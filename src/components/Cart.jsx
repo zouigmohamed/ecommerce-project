@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
+
 function Cart() {
-  const cart = useSelector((state)=> state.cart)
+  const cartValue = useSelector((state) => state.cart.value); // Access the 'value' field
   return (
     <div>
-{console.log(cart.products.length)}
+      <h1>Cart</h1>
+      <p>Cart Value: {cartValue}</p>
     </div>
-  )
+  );
 }
 
-export default Cart
+export default Cart;
